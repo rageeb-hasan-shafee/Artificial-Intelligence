@@ -192,6 +192,7 @@ public class NPuzzle {
 
     public NPuzzle(int k) {
         this.k = k;
+        System.out.println("ofajfojadfokash");
     }
 
     public void solveWithManhattanDistance(int[][] initialGrid) {
