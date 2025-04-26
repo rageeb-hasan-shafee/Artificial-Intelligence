@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.*;
+import java.util.Scanner;
 
 public class Node {
     private int k;
@@ -185,7 +187,7 @@ public class Node {
     }
 }
 
-import java.util.*;
+// import java.util.*;
 
 public class NPuzzle {
     private int k;
@@ -327,9 +329,9 @@ public class NPuzzle {
         return sb.toString();
     }
 }
-import java.util.Scanner;
+// import java.util.Scanner;
 
-public class Main {
+public class demo {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -395,3 +397,6 @@ public class Main {
 //         }
 //         return conflicts;
 //     }
+
+
+

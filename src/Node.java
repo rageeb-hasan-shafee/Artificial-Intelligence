@@ -34,6 +34,21 @@ public class Node{
         this.previous = previous;
     }
 
+    public Node(Node other){
+        this.k = other.k;
+        this.moves = other.moves;
+        this.previous = other.previous;
+        this.grid = new int[k][k];
+
+        for (int i = 0; i < k; i++) {
+            System.arraycopy(other.grid[i], 0, this.grid[i], 0, k);
+        }
+
+        this.blankRow = other.blankRow;
+        this.blankCol = other.blankCol;
+        
+    }
+
     public int[][] getGrid(){
         int[][] newGrid = new int[k][k];
 
@@ -91,10 +106,6 @@ public class Node{
         return distance;
     }
 
-    public int calculateManhattanCost(){
-        return moves + calculateManhattanDistance();
-    }
-
     public int calculateHammingDistance(){
         int distance = 0;
         int count = 1;
@@ -108,10 +119,6 @@ public class Node{
             }
         }
         return distance;
-    }
-
-    public int calculateHammingCost(){
-        return moves + calculateHammingDistance();
     }
 
     public int calculateEuclideanDistance(){
@@ -130,10 +137,6 @@ public class Node{
         }
 
         return (int)Math.round(distance);
-    }
-
-    public int calculateEuclideanCost(){
-        return moves + calculateEuclideanDistance();
     }
 
     private int calculateRowConflicts(){
