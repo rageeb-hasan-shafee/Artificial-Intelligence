@@ -4,35 +4,88 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int k = sc.nextInt();
-        int[][] initialBoard = new int[k][k];
-        for (int i = 0; i < k; i++) {
-            for (int j = 0; j < k; j++) {
-                String s = sc.next();
-                // if (s.equals("*")) {
-                //     initialBoard[i][j] = 0;
-                // } else {
-                    initialBoard[i][j] = Integer.parseInt(s);
-                //}
+        while (true) {
+            PuzzleConfig initialNode = null;
+            int k = 0;
+
+            // Input a NEW puzzle
+            while (true) {
+                try {
+                    System.out.println("Enter size of puzzle (k):");
+                    k = Integer.parseInt(sc.nextLine().trim());
+                    if (k <= 1) {
+                        System.out.println("Size must be at least 2. Try again.");
+                        continue;
+                    }
+
+                    System.out.println("Enter the puzzle board (use 0 for blank):");
+                    int[][] initialBoard = new int[k][k];
+                    for (int i = 0; i < k; i++) {
+                        String[] row = sc.nextLine().trim().split("\\s+");
+                        if (row.length != k) {
+                            System.out.println("Invalid row length. Try again.");
+                            i--; // Retry this row
+                            continue;
+                        }
+                        for (int j = 0; j < k; j++) {
+                            // if (row[j].equals("*")) {
+                            //     initialBoard[i][j] = 0;
+                            // } else {
+                                initialBoard[i][j] = Integer.parseInt(row[j]);
+                            }
+                        // }
+                    }
+
+                    initialNode = new PuzzleConfig(k, initialBoard);
+
+                    if (!isSolvable(initialNode)) {
+                        System.out.println("Unsolvable puzzle! Please input a solvable puzzle.");
+                        continue;
+                    }
+
+                    break; // Valid puzzle input
+                } catch (Exception e) {
+                    System.out.println("Invalid input! Please try again.");
+                }
             }
-        }
 
-        System.out.println("Enter heuristic (MANHATTAN / HAMMING / EUCLIDEAN / LINEAR_CONFLICT):");
-        String heuristicType = sc.next();
+            boolean continueWithSamePuzzle = true;
 
-        Heuristic heuristic = Factory.getHeuristic(heuristicType);
-        if (heuristic == null) {
-            System.out.println("Invalid heuristic selected.");
-            return;
-        }
+            while (continueWithSamePuzzle) {
+                // Ask heuristic
+                Heuristic heuristic = null;
+                while (heuristic == null) {
+                    System.out.println("Enter heuristic (MANHATTAN / HAMMING / EUCLIDEAN / LINEAR_CONFLICT):");
+                    String heuristicType = sc.nextLine().trim();
+                    heuristic = Factory.getHeuristic(heuristicType);
+                    if (heuristic == null) {
+                        System.out.println("Invalid heuristic selected. Try again.");
+                    }
+                }
 
-        PuzzleConfig initialNode = new PuzzleConfig(k, initialBoard);
+                // Solve
+                NPuzzleSolver solver = new NPuzzleSolver(heuristic);
+                solver.solve(initialNode);
 
-        if (!isSolvable(initialNode)) {
-            System.out.println("Unsolvable puzzle");
-        } else {
-            NPuzzleSolver solver = new NPuzzleSolver(heuristic);
-            solver.solve(initialNode);
+                // Ask what to do next
+                System.out.println("\nWhat do you want to do next?");
+                System.out.println("1. Try another heuristic on the same puzzle");
+                System.out.println("2. Solve a completely new puzzle");
+                System.out.println("3. Exit");
+
+                String choice = sc.nextLine().trim();
+                if (choice.equals("1")) {
+                    continueWithSamePuzzle = true; // Same puzzle, different heuristic
+                } else if (choice.equals("2")) {
+                    continueWithSamePuzzle = false; // Break inner loop to input new puzzle
+                } else if (choice.equals("3")) {
+                    System.out.println("Exiting program. Thank you!");
+                    return; // Exit the entire program
+                } else {
+                    System.out.println("Invalid option. Assuming exit.");
+                    return;
+                }
+            }
         }
     }
 
@@ -51,7 +104,7 @@ public class Main {
 
     private static int[] flatten(int[][] board) {
         int n = board.length;
-        int[] array = new int[n * n];    
+        int[] array = new int[n * n];
         int idx = 0;
         for (int[] row : board) {
             for (int val : row) {
