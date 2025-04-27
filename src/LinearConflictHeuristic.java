@@ -1,6 +1,6 @@
-public class LinearConflictHeuristic implements Strategy {
+public class LinearConflictHeuristic implements Heuristic {
     @Override
-    public int calculateCost(Node node) {
-        return node.getMoves() + node.calculateLinearConflict();
+    public int calculateCost(PuzzleConfig puzzleConfig) {
+        return puzzleConfig.getMoves() + puzzleConfig.calculateLinearConflict();
     }
 }

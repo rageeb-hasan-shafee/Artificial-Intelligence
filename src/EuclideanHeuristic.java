@@ -1,6 +1,6 @@
-public class EuclideanHeuristic implements Strategy{
+public class EuclideanHeuristic implements Heuristic{
     @Override
-    public int calculateCost(Node node){
-        return node.getMoves() + node.calculateEuclideanDistance();
+    public int calculateCost(PuzzleConfig puzzleConfig){
+        return puzzleConfig.getMoves() + puzzleConfig.calculateEuclideanDistance();
     }
 }

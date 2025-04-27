@@ -1,6 +1,6 @@
-public class ManhattanHeuristic implements Strategy{
+public class ManhattanHeuristic implements Heuristic{
     @Override
-    public int calculateCost(){
-                return node.getMoves() + node.calculateManhattanDistance();
+    public int calculateCost(PuzzleConfig puzzleConfig){
+                return puzzleConfig.getMoves() + puzzleConfig.calculateManhattanDistance();
     }
 }
