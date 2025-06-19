@@ -1,0 +1,83 @@
+
+PS F:\3-1\CSE 318\1. A star seach Algorithim\2105175> git init
+Initialized empty Git repository in F:/3-1/CSE 318/1. A star seach Algorithim/2105175/.git/
+PS F:\3-1\CSE 318\1. A star seach Algorithim\2105175> git add .
+warning: in the working copy of 'pom.xml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/App.java', LF will be replaced by CRLF the next time Git touches it
+PS F:\3-1\CSE 318\1. A star seach Algorithim\2105175> git commit -m "i want to commit"
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'Windows@DESKTOP-JQ52CVB.(none)')
+PS F:\3-1\CSE 318\1. A star seach Algorithim\2105175> git remote add origin https://github.com/ThomasShelBy2105175/Test1.git
+PS F:\3-1\CSE 318\1. A star seach Algorithim\2105175> git commit -m "i want to commit"
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'Windows@DESKTOP-JQ52CVB.(none)')
+PS F:\3-1\CSE 318\1. A star seach Algorithim\2105175> git config --global user.name "Rageeb Hasan Shafee"
+PS F:\3-1\CSE 318\1. A star seach Algorithim\2105175> git config --global user.email "shafeehasan001@gmail.com"
+PS F:\3-1\CSE 318\1. A star seach Algorithim\2105175> git commit -m "i want to commit"                         
+[master (root-commit) e7a1291] i want to commit
+ 5 files changed, 659 insertions(+)
+ create mode 100644 pom.xml
+ create mode 100644 src/App.class
+ create mode 100644 src/App.java
+ create mode 100644 src/Node.java
+ create mode 100644 src/demo.java
+PS F:\3-1\CSE 318\1. A star seach Algorithim\2105175> git push 
+fatal: The current branch master has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin master
+
+To have this happen automatically for branches without a tracking
+upstream, see 'push.autoSetupRemote' in 'git help config'.
+
+PS F:\3-1\CSE 318\1. A star seach Algorithim\2105175> git push --set-upstream origin master
+info: please complete authentication in your browser...
+Enumerating objects: 8, done.
+Counting objects: 100% (8/8), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (8/8), done.
+Writing objects: 100% (8/8), 4.32 KiB | 884.00 KiB/s, done.
+Total 8 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/ThomasShelBy2105175/Test1.git
+ * [new branch]      master -> master
+branch 'master' set up to track 'origin/master'.
+PS F:\3-1\CSE 318\1. A star seach Algorithim\2105175> git push
+Everything up-to-date
+PS F:\3-1\CSE 318\1. A star seach Algorithim\2105175> git commit -m "initiate new variable on demo.java"
+[master c825433] initiate new variable on demo.java
+ 3 files changed, 6 insertions(+)
+ create mode 100644 src/gitpractise.java
+PS F:\3-1\CSE 318\1. A star seach Algorithim\2105175> git push
+Enumerating objects: 10, done.
+Counting objects: 100% (10/10), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 658 bytes | 329.00 KiB/s, done.
+Total 6 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/ThomasShelBy2105175/Test1.git
+   e7a1291..c825433  master -> master
+PS F:\3-1\CSE 318\1. A star seach Algorithim\2105175> 
